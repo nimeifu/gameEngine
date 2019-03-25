@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -14,12 +15,15 @@ import javafx.scene.shape.Box;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Main extends Application {
 
     private Pane root = new Pane();
 
-    private Sprite player = new Sprite(300,500,100,150,"player",Color.GOLD);
+    private Sprite player = new Sprite(300,500,100,150,Color.GOLD);
+
+
 
     private Parent content() {
         root.setPrefSize(1000, 800);
@@ -44,6 +48,7 @@ public class Main extends Application {
         launch(args);
     }
 
+
    @Override
     public void start(Stage stage)throws Exception{
         Scene scene=new Scene(content());
@@ -56,10 +61,10 @@ public class Main extends Application {
 
             case D:
                 player.moveRight();
-           /*
+
             case SPACE:
                 player.jump();
-                */
+
         }
         });
 
@@ -67,12 +72,15 @@ public class Main extends Application {
         stage.show();
    }
 
-   private static class Sprite extends Rectangle{
-       private final String type;
 
-       Sprite(int x, int y, int w, int h, String type, Color color){
+
+
+    private static class Sprite extends Rectangle{
+
+
+       Sprite(int x, int y, int w, int h, Color color){
         super(w,h,color);
-        this.type=type;
+
         setTranslateX(x);
         setTranslateY(y);
 
@@ -86,5 +94,12 @@ public class Main extends Application {
     }
 
 
-}
+    void jump()
+       {
+            
+
+       }
+
+
+   }
 }
